@@ -1,0 +1,17 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ipynb_checkpoints/
+
+outputs/
+*.log
+
+.DS_Store
+Thumbs.db
+
+*_all.csv
+*_all.csv.gz
+*_detJ_regular.csv
+*_detJ_regular.csv.gz
+*_detJ_singular.csv
+*_detJ_singular.csv.gz

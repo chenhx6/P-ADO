@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "p-ado"
+version = "1.0.0"
+description = "P-ADO mixing-ratio analysis using polarization and angular-distribution observables."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+    { name = "P-ADO developers" }
+]
+dependencies = [
+    "numpy>=1.24",
+    "scipy>=1.10",
+    "sympy>=1.12",
+]
+
+[project.scripts]
+p-ado = "p_ado.main:main"
+
+[tool.setuptools]
+packages = ["p_ado", "p_ado.compute", "p_ado.physics", "p_ado.pdf", "p_ado.io"]
+
+[tool.setuptools.package-data]
+p_ado = ["*.dat", "requirements.txt", "README.md"]

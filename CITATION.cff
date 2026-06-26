@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use P-ADO in your research, please cite this software and the associated publication or data record."
+title: "P-ADO: A Python program for mixing-ratio analysis using polarization and angular-distribution observables"
+version: "1.0.0"
+date-released: "2026-06-26"
+authors:
+  - family-names: "Chen"
+    given-names: "Hong Xing"
+  - family-names: "Qiang"
+    given-names: "Yun Hua"
+  - family-names: "Guo"
+    given-names: "Song"
+repository-code: "https://github.com/chennhx6/P-ADO"
+license: "MIT"
+keywords:
+  - "gamma-ray spectroscopy"
+  - "mixing ratio"
+  - "linear polarization"
+  - "angular distribution"
+  - "P-ADO"
