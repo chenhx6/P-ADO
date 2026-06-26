@@ -4,6 +4,10 @@
 
 The `analysis` directory contains helper modules and notebooks for inspecting P-ADO CSV outputs, producing two-dimensional density plots, projecting one-dimensional distributions, and diagnosing singular or near-singular Jacobian regions.
 
+## Supported environment
+
+Python 3.8 or later is required. Ubuntu 20.04 or later is recommended. On Ubuntu 18.04, please install Python 3.8 explicitly; the default Python 3.6 environment is not supported.
+
 ## Required input files
 
 The analysis workflow expects CSV files produced by the calculation package. No example CSV files are included in the repository.

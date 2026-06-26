@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Any, Callable, Literal
+from typing import Any, Callable, Literal, Optional, Tuple
 
 import numpy as np
 import pandas as pd
@@ -34,7 +34,7 @@ REQUIRED_COLUMNS = [
 ]
 
 
-RangeLike = tuple[float, float] | None
+RangeLike = Optional[Tuple[float, float]]
 
 
 def _require_columns(df: pd.DataFrame, columns: list[str] | tuple[str, ...]) -> None:

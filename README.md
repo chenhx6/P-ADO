@@ -8,6 +8,10 @@ P-ADO is a Python research codebase for mixing-ratio analysis using polarization
 
 P-ADO maps transition-level input observables into probability-density output tables in delta-sigma/I, AT-sigma/I, and observable spaces. It also writes diagnostic CSV files that split rows by the signed Jacobian criterion used to identify regular and singular or near-singular response regions.
 
+## Supported environment
+
+Python 3.8 or later is required. Ubuntu 20.04 or later is recommended. On Ubuntu 18.04, please install Python 3.8 explicitly; the default Python 3.6 environment is not supported.
+
 ## Repository structure
 
 ```text

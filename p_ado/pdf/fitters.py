@@ -66,6 +66,8 @@ Instead, it returns a model dictionary such as:
 That dictionary is then turned into an evaluator by `pdf/evaluators.py`.
 """
 
+from __future__ import annotations
+
 import numpy as np
 from scipy.optimize import minimize
 from scipy.stats import skewnorm

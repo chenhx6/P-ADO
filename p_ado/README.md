@@ -4,6 +4,10 @@
 
 The `p_ado` package runs the P-ADO calculation workflow for mixing-ratio analysis using polarization and angular-distribution observables. It reads transition input from a `.dat` file and writes CSV exports plus a markdown runtime report.
 
+## Supported environment
+
+Python 3.8 or later is required. Ubuntu 20.04 or later is recommended. On Ubuntu 18.04, please install Python 3.8 explicitly; the default Python 3.6 environment is not supported.
+
 ## Input file format
 
 Input files are whitespace-delimited `.dat` files, not CSV files. Empty lines and lines beginning with `#` are ignored. The program reads at least eight columns and uses the absolute value of the four uncertainty columns.
