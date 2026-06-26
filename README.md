@@ -68,7 +68,7 @@ See `p_ado/README.md` for input columns, output columns, and Jacobian split deta
 
 ## Analysis workflow
 
-Use the ordinary analysis helpers and `YExtract.ipynb` with `*_all.csv` or `*_all.csv.gz` files. Use the singular diagnostic helpers and `YExtract_singular.ipynb` with `*_detJ_singular.csv` or `*_detJ_singular.csv.gz` files.
+Use the ordinary analysis helpers and `YExtract.ipynb` with `*_all.csv` or `*_all.csv.gz` files. Use `analysis/YAll_transition_results.ipynb` for batch projection summaries across multiple ordinary P-ADO transition output files. Use the singular diagnostic helpers and `YExtract_singular.ipynb` with `*_detJ_singular.csv` or `*_detJ_singular.csv.gz` files.
 
 See `analysis/README.md` before applying grid-based plotting routines to regular diagnostic files.
 

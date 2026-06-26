@@ -28,6 +28,14 @@ CSV_PATH = Path(r"path\to\file_name.csv.gz")
 
 Use ordinary analysis with `*_all.csv` or `*_all.csv.gz` files. Use singular diagnostics with `*_detJ_singular.csv` or `*_detJ_singular.csv.gz` files. Do not assume that `*_detJ_regular.csv` or `*_detJ_regular.csv.gz` files form a complete rectangular grid.
 
+## Which CSV files should be used?
+
+- Ordinary analysis and batch summaries: use `*_all.csv` or `*_all.csv.gz`.
+- Singular diagnostics: use `*_detJ_singular.csv` or `*_detJ_singular.csv.gz` with the singular-analysis notebook/scripts.
+- Regular files: `*_detJ_regular.csv` or `*_detJ_regular.csv.gz` are sparse after singular/near-singular points are removed. They are not the default input for the grid-based analysis notebooks.
+
+If regular-file analysis is required, treat the data as a sparse point set. Use dedicated sparse-data plotting or tabulation methods, or start from the corresponding `*_all.csv.gz` file and apply an explicit regular-point mask. Do not assume that regular files form a complete rectangular delta-sigma/I or AT-sigma/I grid.
+
 ## Ordinary analysis workflow for `*_all.csv` or `*_all.csv.gz`
 
 Use `YAnalysis.py`, `YPlot.py`, and `YExtract.ipynb` for ordinary analysis of complete all-data files:
@@ -38,6 +46,19 @@ Use `YAnalysis.py`, `YPlot.py`, and `YExtract.ipynb` for ordinary analysis of co
 ```
 
 These files retain the full delta-sigma/I grid and are suitable for the grid-based density and projection helpers.
+
+## Batch summary notebook
+
+`YAll_transition_results.ipynb` scans multiple ordinary P-ADO output files (`*_all.csv` or `*_all.csv.gz`) and writes combined projection-summary tables. It is useful when several transitions have been processed and the user wants a single table containing EQ summaries, HDI summaries, gate labels, Gaussian-weight labels, and multi-interval HDI diagnostics.
+
+The notebook writes two summary tables:
+
+```text
+YAll_transition_summary_delta_wide.csv
+YAll_transition_summary_delta_view.csv
+```
+
+The wide table keeps most available columns for downstream analysis. The view table keeps selected columns for quick reading and spreadsheet inspection.
 
 ## Singular diagnostic workflow for `*_detJ_singular.csv` or `*_detJ_singular.csv.gz`
 
