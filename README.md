@@ -6,7 +6,7 @@ P-ADO is a Python research codebase for mixing-ratio analysis using polarization
 
 ## What is P-ADO?
 
-P-ADO maps transition-level input observables into probability-density output tables in delta-sigma/I, AT-sigma/I, and observable spaces. It also writes diagnostic CSV files that split rows by the signed Jacobian criterion used to identify regular and singular or near-singular response regions.
+P-ADO maps transition-level input observables into probability-density output tables in delta-sigma/I, AT-sigma/I, and observable spaces. The all-data CSV is the primary calculation output and official benchmark dataset; optional `detJ_singular` and `detJ_regular` files provide diagnostic splits based on the Jacobian determinant.
 
 ## Supported environment
 
@@ -64,7 +64,7 @@ The command above writes CSV files and a markdown runtime report under `outputs/
 
 Prepare a whitespace-delimited `.dat` input file with transition rows, then run the P-ADO CLI in `test` mode for a small verification run or `full` mode for the full production grid. The calculation package writes an all-data CSV file, optional Jacobian diagnostic split files, and a markdown runtime report in the selected output directory.
 
-See `p_ado/README.md` for input columns, output columns, and Jacobian split details.
+See `p_ado/README.md` for detailed input/output definitions and Jacobian diagnostic rules.
 
 ## Analysis workflow
 

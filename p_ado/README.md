@@ -109,15 +109,42 @@ The singular diagnostic file appends signed-Jacobian diagnostic columns, includi
 
 The runtime report records the input file name, relative input path, output directory, generated file names, grid mode, transition count, global settings, fitted PDF summaries, Jacobian diagnostics, CSV export metadata, and runtime timings. Paths are displayed as relative paths or file names so reports are portable.
 
-## Jacobian regular/singular split rule
+## Numerical Jacobian evaluation and regular/singular diagnostics
 
-Rows are written to the singular diagnostic file when:
+The Jacobian determinant used in the density transformation is evaluated numerically on the response-function grid by centered finite differences in `transform_pdf_with_central_difference()`. For the `(delta, sigma/I)` coordinates, the code estimates the local derivatives of `(P, R_ADO)` and forms the signed determinant using:
+
+```text
+detJ_signed(delta,sigma/I) = dP/ddelta * dR_ADO/d(sigma/I) - dP/d(sigma/I) * dR_ADO/ddelta
+```
+
+The transformed density uses the absolute determinant, so the sign is mainly used for diagnostics. The code also evaluates the analogous signed determinant in `(ArcTan[delta](AT), sigma/I)` coordinates for diagnostic reporting and export.
+
+Boundary points cannot support centered finite differences and are therefore excluded from the Jacobian-transformed output. The output corresponds to the interior response grid, `pado_points[1:-1, 1:-1, :]`.
+
+The diagnostic split uses `detJ_signed(delta,sigma/I)`, not the AT-space determinant. Rows are written to the singular diagnostic file when:
 
 ```text
 nonfinite or abs(detJ_signed(delta,sigma/I)) <= detJ_near_zero_threshold
 ```
 
-Rows with finite signed determinant values above the threshold are written to the regular diagnostic file when regular export is enabled. The official benchmark dataset is the all-data file.
+Rows with finite `detJ_signed(delta,sigma/I)` and an absolute value above the threshold are written to the regular diagnostic file when regular export is enabled. The default threshold is `1e-12`, defined by `DETJ_NEAR_ZERO_THRESHOLD` in `p_ado/config.py`; use `--detj-near-zero-threshold` to override it.
+
+The singular diagnostic export appends these columns:
+
+```text
+detJ_signed(delta,sigma/I)
+detJ_abs(delta,sigma/I)
+detJ_sign(delta,sigma/I)
+detJ_signed(ArcTan[delta](AT),sigma/I)
+detJ_abs(ArcTan[delta](AT),sigma/I)
+detJ_sign(ArcTan[delta](AT),sigma/I)
+detJ_class
+detJ_near_zero_threshold
+detJ_split_rule
+observable_density_rel_to_max
+```
+
+The all-data CSV remains the official benchmark dataset. The `detJ_singular` and `detJ_regular` files are diagnostic split exports.
 
 ## Notes on computational cost
 
