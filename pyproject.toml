@@ -10,7 +10,9 @@ readme = "README.md"
 requires-python = ">=3.8"
 license = { text = "MIT" }
 authors = [
-    { name = "P-ADO developers" }
+    { name = "Hong Xing Chen" },
+    { name = "Yun Hua Qiang" },
+    { name = "Song Guo" }
 ]
 dependencies = [
     "numpy>=1.24",
