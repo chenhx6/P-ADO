@@ -72,6 +72,10 @@ Use the ordinary analysis helpers and `YExtract.ipynb` with `*_all.csv` or `*_al
 
 See `analysis/README.md` before applying grid-based plotting routines to regular diagnostic files.
 
+## AI assistance disclosure
+
+Parts of this project were developed with assistance from OpenAI Codex. The repository author reviewed, tested, and curated the generated or suggested code before public release. All scientific assumptions, implementation choices, validation, and final responsibility for the released software remain with the repository author.
+
 ## Citation
 
 Citation metadata is provided in `CITATION.cff`. The author list, repository URL, and any future Science Data Bank DOI must be completed before formal release.
