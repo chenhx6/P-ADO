@@ -1,4 +1,5 @@
 from time import perf_counter
+from typing import Any, Dict, Literal, Tuple, overload
 
 from ..config import (
     DENSITY_REL_THRESHOLDS,
@@ -73,6 +74,81 @@ def _build_transition_report(
     }
 
 
+@overload
+def solve_transition(
+    tr: Any,
+    grid_cfg: Any,
+    pdf_cfg: PdfConfig,
+    return_report: Literal[True],
+    return_array: bool = False,
+    return_export_data: Literal[False] = False,
+    high_density_rel_thresholds: Any = DENSITY_REL_THRESHOLDS,
+    high_density_rel_threshold: Any = None,
+    detj_near_zero_threshold: float = DETJ_NEAR_ZERO_THRESHOLD,
+) -> Tuple[Any, Dict[str, Any]]:
+    ...
+
+
+@overload
+def solve_transition(
+    tr: Any,
+    grid_cfg: Any,
+    pdf_cfg: PdfConfig,
+    return_report: Literal[True],
+    return_array: bool = False,
+    return_export_data: Literal[True] = True,
+    high_density_rel_thresholds: Any = DENSITY_REL_THRESHOLDS,
+    high_density_rel_threshold: Any = None,
+    detj_near_zero_threshold: float = DETJ_NEAR_ZERO_THRESHOLD,
+) -> Tuple[Any, Dict[str, Any], Dict[str, Any]]:
+    ...
+
+
+@overload
+def solve_transition(
+    tr: Any,
+    grid_cfg: Any,
+    pdf_cfg: PdfConfig,
+    return_report: Literal[False] = False,
+    return_array: bool = False,
+    return_export_data: Literal[False] = False,
+    high_density_rel_thresholds: Any = DENSITY_REL_THRESHOLDS,
+    high_density_rel_threshold: Any = None,
+    detj_near_zero_threshold: float = DETJ_NEAR_ZERO_THRESHOLD,
+) -> Any:
+    ...
+
+
+@overload
+def solve_transition(
+    tr: Any,
+    grid_cfg: Any,
+    pdf_cfg: PdfConfig,
+    return_report: Literal[False] = False,
+    return_array: bool = False,
+    return_export_data: Literal[True] = True,
+    high_density_rel_thresholds: Any = DENSITY_REL_THRESHOLDS,
+    high_density_rel_threshold: Any = None,
+    detj_near_zero_threshold: float = DETJ_NEAR_ZERO_THRESHOLD,
+) -> Tuple[Any, Dict[str, Any]]:
+    ...
+
+
+@overload
+def solve_transition(
+    tr: Any,
+    grid_cfg: Any,
+    pdf_cfg: PdfConfig,
+    return_report: bool = False,
+    return_array: bool = False,
+    return_export_data: bool = False,
+    high_density_rel_thresholds: Any = DENSITY_REL_THRESHOLDS,
+    high_density_rel_threshold: Any = None,
+    detj_near_zero_threshold: float = DETJ_NEAR_ZERO_THRESHOLD,
+) -> Any:
+    ...
+
+
 def solve_transition(
     tr,
     grid_cfg,
@@ -83,7 +159,7 @@ def solve_transition(
     high_density_rel_thresholds=DENSITY_REL_THRESHOLDS,
     high_density_rel_threshold=None,
     detj_near_zero_threshold: float = DETJ_NEAR_ZERO_THRESHOLD,
-):
+) -> Any:
     t_total0 = perf_counter()
     theta_deg_list, delta_list = build_delta_grid(grid_cfg)
     sigma_list, sigma_i_list = build_sigma_grid(tr.ji, grid_cfg)
