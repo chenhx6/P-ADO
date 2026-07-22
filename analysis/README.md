@@ -49,16 +49,18 @@ These files retain the full delta-sigma/I grid and are suitable for the grid-bas
 
 ## Batch summary notebook
 
-`YAll_transition_results.ipynb` scans multiple ordinary P-ADO output files (`*_all.csv` or `*_all.csv.gz`) and writes combined projection-summary tables. It is useful when several transitions have been processed and the user wants a single table containing EQ summaries, HDI summaries, gate labels, Gaussian-weight labels, and multi-interval HDI diagnostics.
+`YAll_transition_results.ipynb` scans multiple ordinary P-ADO output files (`*_all.csv` or `*_all.csv.gz`) and writes separate delta and arctan(delta) projection-summary tables. It is useful when several transitions have been processed and the user wants combined EQ summaries, HDI summaries, gate labels, Gaussian-weight labels, and multi-interval HDI diagnostics. Arctan(delta) results use the degree-valued `ArcTan[delta](AT)` coordinate and its corresponding probability density.
 
-The notebook writes two summary tables:
+The notebook writes four summary tables:
 
 ```text
 YAll_transition_summary_delta_wide.csv
 YAll_transition_summary_delta_view.csv
+YAll_transition_summary_arctan_delta_wide.csv
+YAll_transition_summary_arctan_delta_view.csv
 ```
 
-The wide table keeps most available columns for downstream analysis. The view table keeps selected columns for quick reading and spreadsheet inspection.
+The wide tables use a stable, non-redundant schema and keep structured details for up to three HDI intervals. The compact view tables keep 22 result-oriented columns for quick reading and spreadsheet inspection. Transition labels omit the input file extension and terminal `_all`; output coordinate labels use `delta` or `arctan(delta)` and identify `sigma/I` as the integrated coordinate.
 
 ## Singular diagnostic workflow for `*_detJ_singular.csv` or `*_detJ_singular.csv.gz`
 
